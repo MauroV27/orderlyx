@@ -1,0 +1,20 @@
+.navbarComponent {
+  width: 100vw;
+  height: 48px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  align-items: center;
+
+  color: var(--color-primary);
+  background-color: var(--color-primary-foreground);
+  border-bottom: solid 2px var(--color-primary);
+
+  padding: 0 12px;
+}
+
+.navbarLogo {
+  margin: 0 !important;
+}

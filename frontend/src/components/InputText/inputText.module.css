@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+/* === Sobrescreve o input interno do MUI === */
+:global(.MuiOutlinedInput-root) {
+  height: 36px;
+  max-height: 36px;
+  border-radius: 6px !important;
+}
+
+:global(.MuiOutlinedInput-input) {
+  padding: 8px 12px !important;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Corrige alinhamento do conteúdo para o caso de multiline */
+:global(.MuiOutlinedInput-root.MuiInputBase-multiline) {
+  height: auto;
+  max-height: none;
+}

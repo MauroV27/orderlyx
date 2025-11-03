@@ -3,6 +3,8 @@ import { Navbar } from "../../components/Navbar";
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 
+import styles from "./home.module.css";
+
 const HomePage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -27,6 +29,7 @@ const HomePage = () => {
 
       <Box>
         <Tabs
+          className={styles.homePageTabSelector}
           value={currentTab}
           onChange={handleChange}
           textColor="primary"
@@ -37,7 +40,7 @@ const HomePage = () => {
           <Tab label="Dashboard" value="dashboard" />
         </Tabs>
 
-        <Box sx={{ mt: 2 }}>
+        <Box className={styles.homePageContentContainer}>
           <Outlet />
         </Box>
       </Box>

@@ -6,7 +6,7 @@ import type {
 } from "../interfaces/users";
 import { api } from "./api";
 
-const BASE_URL = "/api";
+const BASE_URL = "/api/v1";
 
 // TODO : Convert to authService
 export const loginService = async (

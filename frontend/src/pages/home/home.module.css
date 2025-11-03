@@ -1,0 +1,9 @@
+.homePageTabSelector {
+  border-bottom: 1px solid var(--color-primary-light);
+}
+
+.homePageContentContainer {
+  padding: 12px !important;
+  width: 100%;
+  height: calc(100vh - 98px);
+}

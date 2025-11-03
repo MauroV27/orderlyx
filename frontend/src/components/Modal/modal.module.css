@@ -1,0 +1,18 @@
+.modalComponent {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 200px;
+}
+
+.modalComponentHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modalComponentHeaderTitle {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 600;
+}

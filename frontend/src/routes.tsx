@@ -16,18 +16,27 @@ function PrivateRoute() {
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 }
 
+function PublicRoute() {
+  const isAuthenticated = !!localStorage.getItem("access_token");
+  return isAuthenticated ? <Navigate to="/home" replace /> : <Outlet />;
+}
+
+function DefaultRoute() {
+  const isAuthenticated = !!localStorage.getItem("access_token");
+  return <Navigate to={isAuthenticated ? "/home" : "/login"} replace />;
+}
+
 const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/register",
-    element: <RegisterPage />,
+    element: <PublicRoute />,
+    children: [
+      { path: "/login", element: <LoginPage /> },
+      { path: "/register", element: <RegisterPage /> },
+    ],
   },
   {
     path: "/home",
-    element: <PrivateRoute />,
+    element: <PrivateRoute />, // 🔐 Protege as rotas privadas
     children: [
       {
         element: <HomePage />,
@@ -42,7 +51,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <Navigate to="/login" replace />,
+    element: <DefaultRoute />,
   },
 ]);
 

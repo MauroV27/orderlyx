@@ -10,7 +10,7 @@ api.interceptors.request.use((config) => {
 
   if (interceptConfig.headers) {
     const authCookie = {
-      access_token: undefined, // ter um hook que insira o token aqui
+      access_token: localStorage.getItem("access_token"),
     };
 
     interceptConfig.headers["Content-Type"] = "application/json";

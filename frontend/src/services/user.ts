@@ -12,13 +12,13 @@ const BASE_URL = "/api/v1";
 export const loginService = async (
   data: UserLoginAuth
 ): Promise<UserAuthResponse> => {
-  return await api.post(`${BASE_URL}/auth/login`, data);
+  const response = await api.post(`${BASE_URL}/auth/login`, data);
+  return response.data;
 };
 
 export const UserService = {
   regiser: async (data: UserRegisterPayload): Promise<UserRegisterReponse> => {
     const response = await api.post(`${BASE_URL}/users`, data);
-    console.log(123123, { response });
 
     return response.data;
   },

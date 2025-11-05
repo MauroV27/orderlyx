@@ -1,0 +1,39 @@
+.modalComponent {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 320px;
+  width: max(25vw, 360px);
+  gap: 8px;
+}
+
+.divider {
+  border-bottom: 1px solid var(--color-primary-light) !important;
+}
+
+.modalComponentHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  padding: 4px 12px;
+  align-items: center;
+}
+
+.modalComponentHeaderTitle {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 600;
+  width: 90%;
+}
+
+.modalComponentContent {
+  padding: 4px 12px;
+}
+
+.modalComponentFooter {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 4px 12px;
+  gap: 8px;
+}

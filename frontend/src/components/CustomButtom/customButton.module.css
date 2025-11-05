@@ -1,3 +1,67 @@
+/* customButton.module.css */
+
+/* --- CLASSE BASE --- */
 .customButtomContainer {
-  width: 100%;
+  text-transform: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.iconButton {
+  padding: 8px;
+  min-width: 36px;
+  width: 36px;
+  max-width: 36px;
+  min-height: 36px;
+  height: 36px;
+  max-height: 36px;
+  border-radius: 8px !important;
+  transition: all 0.3s ease;
+}
+
+/* --- VARIAÇÕES DE TAMANHO (width + padding) --- */
+
+/* 1. Tamanho Pequeno (small) */
+.size--small {
+  padding: 4px 12px; /* Padding menor */
+  font-size: 0.75rem;
+}
+
+/* 2. Tamanho Médio (medium) - Padrão */
+.size--medium {
+  padding: 8px 16px; /* Padding padrão */
+  font-size: 0.875rem;
+}
+
+/* 3. Tamanho Grande (large) */
+.size--large {
+  padding: 12px 24px; /* Padding maior */
+  font-size: 1rem;
+}
+
+/* 4. Largura Total (fullWidth) */
+.size--fullWidth {
+  width: 100%; /* Largura total */
+  padding: 10px 16px; /* Padding fixo ou customizado */
+}
+
+.variant--contained {
+  box-shadow: 0px;
+  background-color: var(--color-primary);
+}
+
+.variant--contained:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Exemplo de como customizar o 'outlined' */
+.variant--outlined {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border) !important;
+}
+
+.variant--outlined:hover {
+  color: var(--color-primary-dark) !important;
+  background-color: var(--color-bg) !important;
+  border: 1px solid var(--color-border) !important;
 }

@@ -1,0 +1,60 @@
+/* inputText.module.css (Exemplo de como estilizar o InputBase) */
+
+/* Contêiner de input */
+.container {
+  /* Estilos de layout do seu contêiner */
+  margin-bottom: 16px;
+}
+
+/* Rótulo */
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: #333;
+}
+
+.errorLabel {
+  color: #d32f2f; /* Cor de erro do MUI */
+}
+
+/* O NOVO ESTILO BASE PARA InputBase */
+.inputBase {
+  border: 1px solid #ccc; /* Borda padrão */
+  border-radius: 4px;
+  padding: 8px 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%; /* Garantir que o fullWidth funcione */
+  display: flex; /* Para alinhar adornments */
+  align-items: center;
+
+  /* Estilização quando focado */
+  /* O InputBase aplica a classe .Mui-focused, mas é mais simples estilizar no :focus-within do container */
+}
+
+.inputBase:focus-within {
+  border-color: #1976d2; /* Cor primária do MUI */
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.errorInput {
+  border-color: #d32f2f; /* Cor de erro */
+}
+
+/* Estilo para o helper text/erro */
+.helperText {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.errorHelper {
+  color: #d32f2f;
+}
+
+/* Estilo para o campo interno do InputBase */
+/* Isso pode ser necessário para garantir que o texto de entrada ocupe o espaço correto */
+.inputBase input {
+  padding: 0; /* Remover padding padrão para controlar com o .inputBase */
+  flex-grow: 1;
+}

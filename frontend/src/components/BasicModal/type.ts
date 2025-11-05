@@ -9,4 +9,5 @@ export type BasicModalProps = DialogProps & {
   title: string;
   titleConfirmAction?: string;
   titleCancelAction?: string;
+  disableConfirmButton?: boolean;
 };

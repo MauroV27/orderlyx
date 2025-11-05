@@ -25,3 +25,30 @@
 .headerAction {
   max-width: fit-content;
 }
+
+.actions {
+  display: flex;
+  flex-direction: row !important;
+  gap: 8px;
+}
+
+.actionDelete:hover {
+  color: var(--color-error) !important;
+}
+
+.modalDeleteContainer {
+  width: 100%;
+  margin: auto;
+}
+
+.modalDeleteContent {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px !important;
+  padding: 12px;
+
+  font-size: 16px;
+}

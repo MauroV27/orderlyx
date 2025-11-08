@@ -31,7 +31,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<ResponseWrapper<?>> login(@RequestBody LoginAccountRequest request) {
+    public ResponseEntity<?> login(@RequestBody LoginAccountRequest request) {
 
         String INVALID_USER_LOGIN = "Email ou senha inválidos";
 
@@ -39,8 +39,7 @@ public class AuthController {
                 .orElseThrow(() -> new RuntimeException(INVALID_USER_LOGIN));
 
         if (!passwordEncoder.matches(request.password(), user.getPassword())) {
-            ResponseWrapper<String> respFail = new ResponseWrapper<>(INVALID_USER_LOGIN, false);
-            return ResponseEntity.status(401).body(respFail);
+            return ResponseEntity.status(401).body(INVALID_USER_LOGIN);
         }
 
         Map<String, Object> claims = new HashMap<>();
@@ -48,8 +47,7 @@ public class AuthController {
         claims.put("id", user.getId());
 
         String token = jwtUtil.generateToken(claims, request.email());
-        ResponseWrapper<LoginAccountResponse> respSuccess = new ResponseWrapper<>(new LoginAccountResponse(token), true);
-        return ResponseEntity.ok(respSuccess);
+        return ResponseEntity.ok(new LoginAccountResponse(token));
     }
 
     @PostMapping("/logout")

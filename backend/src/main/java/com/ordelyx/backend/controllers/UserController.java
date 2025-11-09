@@ -25,7 +25,7 @@ public class UserController {
         try {
             RegisterAccountResponse newUser =  userService.createUser(user);
             ResponseWrapper<RegisterAccountResponse> response = new ResponseWrapper<>(newUser, true);
-            return ResponseEntity.ok(response);
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (IllegalArgumentException e) {
             ResponseWrapper<String> response = new ResponseWrapper<>(e.getMessage(), false);
             return ResponseEntity

@@ -28,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<ResponseWrapper<List<RegisterProductResponse>>> listProducts(@RequestHeader("Authorization") String authHeader) {
+    public ResponseEntity<List<RegisterProductResponse>> listProducts(@RequestHeader("Authorization") String authHeader) {
         String token = authHeader.replace("Bearer ", "");
         UUID userId = jwtUtil.extractUserId(token);
 
@@ -42,11 +42,11 @@ public class ProductController {
                 ))
                 .toList();
 
-        return ResponseEntity.ok(new ResponseWrapper<>(response, true));
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping
-    public ResponseEntity<ResponseWrapper<RegisterProductResponse>> createProduct(
+    public ResponseEntity<RegisterProductResponse> createProduct(
             @RequestHeader("Authorization") String authHeader,
             @RequestBody RegisterProductRequest productToRegister) {
 
@@ -72,7 +72,7 @@ public class ProductController {
                 savedProduct.getId().toString()
         );
 
-        return ResponseEntity.ok(new ResponseWrapper<>(response, true));
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

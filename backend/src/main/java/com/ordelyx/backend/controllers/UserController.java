@@ -21,13 +21,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<ResponseWrapper<?>> createUser(@RequestBody @NonNull RegisterAccountRequest user) {
+    public ResponseEntity<?> createUser(@RequestBody @NonNull RegisterAccountRequest user) {
         try {
             RegisterAccountResponse newUser =  userService.createUser(user);
-            ResponseWrapper<RegisterAccountResponse> response = new ResponseWrapper<>(newUser, true);
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
         } catch (IllegalArgumentException e) {
-            ResponseWrapper<String> response = new ResponseWrapper<>(e.getMessage(), false);
+            String response = e.getMessage();
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(response);

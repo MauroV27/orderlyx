@@ -1,4 +1,4 @@
-package com.ordelyx.backend.controllers;
+package com.ordelyx.backend.advice.wrappers;
 
 import lombok.Getter;
 

@@ -75,6 +75,40 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<RegisterProductResponse> updateProduct(
+            @RequestHeader("Authorization") String authHeader,
+            @PathVariable UUID id,
+            @RequestBody RegisterProductRequest updatedProductRequest) {
+
+        String token = authHeader.replace("Bearer ", "");
+        UUID userId = jwtUtil.extractUserId(token);
+
+        Optional<Product> existingProduct = productService.getProductById(id);
+        if (existingProduct.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Product product = existingProduct.get();
+
+        if (!product.getUser().getId().equals(userId)) {
+            return ResponseEntity.status(403).build();
+        }
+
+        product.setName(updatedProductRequest.name());
+        product.setPrice(updatedProductRequest.price());
+
+        Product updatedProduct = productService.updateProduct(product);
+
+        RegisterProductResponse response = new RegisterProductResponse(
+                updatedProduct.getName(),
+                updatedProduct.getPrice(),
+                updatedProduct.getId().toString()
+        );
+
+        return ResponseEntity.ok(response);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(
             @RequestHeader("Authorization") String authHeader,

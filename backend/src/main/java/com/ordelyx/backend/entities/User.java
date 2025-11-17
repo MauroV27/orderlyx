@@ -27,4 +27,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    public User(String email, String username, String password){
+        this.setEmail(email);
+        this.setUsername(username);
+        this.setPassword(password);
+    }
+
 }

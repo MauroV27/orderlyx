@@ -21,6 +21,9 @@ public final class TestConstants {
     public static final String API_PRODUCTS = API_ROOT + "/products";
     public static final String API_PRODUCTS_BY_ID = API_PRODUCTS + "/{id}";
 
+    public static final String API_ORDERS = API_ROOT + "/orders";
+    public static final String API_ORDERS_BY_ID = API_ORDERS + "/{id}";
+
     // --- Rotas de Saúde/Monitoramento ---
     public static final String API_ACTUATOR_HEALTH = "/actuator/health";
 

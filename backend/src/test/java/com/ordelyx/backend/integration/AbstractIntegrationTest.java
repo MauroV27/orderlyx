@@ -1,6 +1,7 @@
 package com.ordelyx.backend.integration;
 
 import com.ordelyx.backend.BackendApplication;
+import com.ordelyx.backend.controllers.AuthController;
 import com.ordelyx.backend.dtos.user.LoginAccountRequest;
 import com.ordelyx.backend.dtos.user.RegisterAccountRequest;
 import org.junit.jupiter.api.TestInstance;
@@ -9,6 +10,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -30,18 +32,19 @@ public abstract class AbstractIntegrationTest {
     protected MockMvc mockMvc;
 
     @Autowired
+    protected AuthController authController;
+
+    @Autowired
     protected ObjectMapper objectMapper;
 
     protected String performLoginAndGetToken(String email, String password) throws Exception {
         LoginAccountRequest loginDto = new LoginAccountRequest(email, password);
 
-        MvcResult result = mockMvc.perform(post(API_AUTH_LOGIN)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(loginDto)))
-                .andExpect(status().isOk())
-                .andReturn();
+        ResponseEntity<?> response = authController.login(loginDto);
 
-        String responseBody = result.getResponse().getContentAsString();
-        return objectMapper.readTree(responseBody).get("data").get(TOKEN_KEY).asText();
+        String responseBody = objectMapper.writeValueAsString(response.getBody());
+        return objectMapper.readTree(responseBody)
+                .get(TOKEN_KEY)
+                .asText();
     }
 }

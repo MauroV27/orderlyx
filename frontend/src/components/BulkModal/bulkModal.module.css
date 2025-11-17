@@ -1,0 +1,49 @@
+.bulkModalComponent {
+  width: 100%;
+  max-width: 70vw;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.contentHeaderTitle {
+  font-size: larger;
+  font-weight: 600;
+
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.listRenderContainer {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.listRenderContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.listRender {
+  padding: 12px;
+  flex-grow: 1;
+
+  background-color: red;
+}
+
+.listRenderForm {
+  min-height: 48px;
+}
+
+.contentFormContainer {
+  flex: 2;
+}
+
+.formContainer {
+  padding: 12px;
+}

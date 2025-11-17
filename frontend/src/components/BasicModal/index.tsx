@@ -31,7 +31,7 @@ export const BasicModal = ({
       }}
       {...props}
     >
-      <Box className={styles.modalComponent}>
+      <Box className={(styles.modalComponent, styles.basicModalComponent)}>
         <Box className={styles.modalComponentHeader}>
           <Typography className={styles.modalComponentHeaderTitle}>
             {title}

@@ -2,9 +2,12 @@
   display: flex;
   flex-direction: column;
 
+  gap: 8px;
+}
+
+.basicModalComponent {
   min-width: 320px;
   width: max(25vw, 360px);
-  gap: 8px;
 }
 
 .divider {

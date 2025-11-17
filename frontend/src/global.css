@@ -52,6 +52,7 @@ body {
   --status-created: #60a5fa;
   --status-ontheway: #8b5cf6;
   --status-delivered: #10b981;
+  --status-concluded: #34d399;
   --status-canceled: #ef4444;
 }
 
